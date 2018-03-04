@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>P1:布局类</title>
+  <style>
+    html * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    /* 方法一：利用float，固定侧边宽度 */
+    /* .q7 {
+      width: 100%;
+      float: left;
+    }
+    @media screen and (max-width: 300px) {
+      .q7>.q7left {
+        display: none;
+      }
+    }
+    .q7 div {
+      min-height: 100px;
+    }
+    .q7>.q7left {
+      float: left;
+      background-color: aqua;
+      width: 200px;
+    }
+    .q7>.q7right {
+      background-color: brown;
+    } */
+
+    /* 方法二：利用绝对定位absolute */
+    /* 通过父级relative，配合子节点absolute进行定位 */
+    .q7 {
+      width: 100%;
+      position: relative;
+    }
+    .q7 div {
+      min-height: 100px;
+      position: absolute;
+    }
+    .q7>.q7left {
+      background-color: aqua;
+      width: 200px;
+    }
+    .q7>.q7right {
+      background-color: brown;
+      left: 200px;
+      right: 0;
+    }
+  </style>
+  <section class="q7">
+    <div class="q7left">left</div>
+    <div class="q7right">right</div>
+  </section>
+</body>
+</html>
