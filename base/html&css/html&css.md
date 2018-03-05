@@ -109,6 +109,24 @@
 
 > [CSS之BFC详解](http://www.html-js.com/article/1866)
 
+##### BFC特点
+
+- 内部的Box会在垂直方向，从顶部开始一个接一个地放置
+- Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加
+- BFC的区域不会与float box叠加
+- BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然
+- 计算BFC的高度时，浮动元素也参与计算
+
+##### 触发BFC
+
+- float 除了none以外的值
+- overflow 除了visible 以外的值（hidden，auto，scroll )
+- display (table-cell，table-caption，inline-block, flex, inline-flex)
+- position值为（absolute，fixed）
+- fieldset元素
+
+##### BFC应用
+
 - BFC可以解决边距重叠问题
 - BFC不会与浮动元素重叠
 - BFC用于清除浮动（计算BFC高度时，浮动元素也会参与计算）
