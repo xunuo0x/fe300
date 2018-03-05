@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Box盒模型</title>
+</head>
+<style>
+  html * {
+    padding: 0;
+    margin: 0;
+  }
+</style>
+<body>
+  <style>
+    .section {
+      background-color: bisque;
+      overflow: hidden;
+    }
+    .child {
+      height: 100px;
+      margin-top: 10px;
+      background-color: aqua;
+    }
+  </style>
+  <section class="section">
+    <div class="child"></div>
+  </section>
+
+  <style>
+    .margin {
+      background-color: red;
+      overflow: hidden;
+    }
+    .margin p {
+      background-color: bisque;
+      margin: 5px auto 25px;
+    }
+  </style>
+  <section class="margin">
+    <p>1</p>
+    <div style="overflow:hidden;">
+        <p>2</p>
+    </div>
+    <p>3</p>
+  </section>
+
+  <style>
+    .layout .left{
+      height: 100px;
+      background-color: palegreen;
+      width: 300px;
+      float: left;
+    }
+    .layout .right {
+      height: 120px;
+      overflow: hidden;
+      background-color: orangered;
+    }
+  </style>
+  <section class="layout">
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </section>
+
+  <style>
+    .float {
+      background-color: orangered;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .float>.float-child {
+      font-size: 30px;
+      float: left;
+    }
+  </style>
+  <section class="float">
+    <div class="float-child">浮动元素</div>
+  </section>
+</body>
+</html>

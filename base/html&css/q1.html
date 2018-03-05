@@ -15,9 +15,8 @@
 <body>
   <style>
     /* 方法一：利用float，固定侧边宽度 */
-    /* .q7 {
+    .q7 {
       width: 100%;
-      float: left;
     }
     @media screen and (max-width: 300px) {
       .q7>.q7left {
@@ -34,7 +33,7 @@
     }
     .q7>.q7right {
       background-color: brown;
-    } */
+    }
 
     /* 方法二：利用绝对定位absolute */
     /* 通过父级relative，配合子节点absolute进行定位 */
@@ -90,22 +89,51 @@
     } */
 
     /* 方法五：利用grid布局 */
-    .q7 {
+    /* .q7 {
       display: grid;
       grid-auto-flow: column;
-      grid-template-rows: 100px;
+      grid-template-rows: 400px;
       grid-template-columns: 200px;
+    }
+    .q7>div {
+      min-height: 100px;
     }
     .q7>.q7left {
       background-color: aqua;
     }
     .q7>.q7right {
       background-color: brown;
-    }
+    } */
   </style>
   <section class="q7">
     <div class="q7left">left</div>
     <div class="q7right">right</div>
+  </section>
+  
+  <style>
+    .q173 {
+      margin-top: 20px;
+    }
+    .q173>.container{
+      position: relative;
+      height: 200px;
+      background-color: aqua;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 100px;
+      transform: translate(-50%, -50%);
+      background-color: bisque;
+    }
+  </style>
+  <section class="q173">
+    <div class="container">
+      <div class="content">
+        <p>消息内容消息内容消息内容消息内容消息内容消息内容消息内容</p>
+      </div>
+    </div>
   </section>
 </body>
 </html>
