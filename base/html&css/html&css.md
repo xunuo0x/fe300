@@ -7,6 +7,37 @@
 > ## Q1：布局类问题
 
 - 7、基本的两列自适应布局
+
+----
+
+### flex布局
+
+1. flex布局子元素的float、clear、vertical-align失效
+2. flex容器（flex container）&flex项目（flex item）
+3. flex container的属性
+    - flex-direction: row | row-reverse | column | column-reverse;主轴方向
+    - flex-wrap: nowrap | wrap | wrap-reverse;如果一条轴线排不下，如何换行
+    - flex-flow: <flex-direction> || <flex-wrap>;flex-direction属性和flex-wrap属性的简写形式
+    - justify-content: flex-start | flex-end | center | space-between | space-around;主轴上对齐方式
+    - align-items:  flex-start | flex-end | center | baseline | stretch;交叉轴上对齐方式
+    - align-content:  flex-start | flex-end | center | space-between | space-around | stretch;多根轴线的对齐方式
+4. flex item的属性
+    - order: <integer>; order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+    - flex-grow: <number>; flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。**按比例分时，此项属性很有用**
+    - flex-shrink：<number>; flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+    - flex-basis: flex-basis: <length> | auto; flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+    - flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]; flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。
+    - align-self: auto | flex-start | flex-end | center | baseline | stretch; align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+
+### grid布局
+
+1. grid容器（grid container） & grid项目（grid item）
+2. **grid-auto-flow**: row/column;网格默认流方向是row，可以通过grid-auto-flow属性把网格流的方向改变成column
+3. grid-template-rows: 60px 40px; grid-template-rows设置行高
+4. grid-template-columns: 40px 50px 60px; grid-template-columns设置列宽
+5. grid-column-gap: 创建列与列之间的间距
+6. grid-row-gap: 创建行与行之间的间距
+
 - 54、实现一个布局：左边固定宽度为200，右边自适应，而且滚动条要自动选择只出现最高的那个
 - 92、做一个两栏布局，左边fixed width，右边responsive，用纸笔手写
 - 101、css 布局，左边定宽右边自适应

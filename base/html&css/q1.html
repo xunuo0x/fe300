@@ -38,7 +38,7 @@
 
     /* 方法二：利用绝对定位absolute */
     /* 通过父级relative，配合子节点absolute进行定位 */
-    .q7 {
+    /* .q7 {
       width: 100%;
       position: relative;
     }
@@ -54,6 +54,53 @@
       background-color: brown;
       left: 200px;
       right: 0;
+    } */
+
+    /* 方法三：利用table布局 */
+    /* .q7 {
+      width: 100%;
+      display: table;
+    }
+    .q7 div {
+      height: 100px;
+      display: table-cell;
+    }
+    .q7>.q7left {
+      background-color: aqua;
+      width: 200px;
+    }
+    .q7>.q7right {
+      background-color: brown;
+    } */
+
+    /* 方法四：利用flex布局 */
+    /* .q7 {
+      display: flex;
+    }
+    .q7 div {
+      min-height: 100px;
+    }
+    .q7>.q7left {
+      background-color: aqua;
+      flex-basis: 200px;
+    }
+    .q7>.q7right {
+      background-color: brown;
+      flex-grow: 1;
+    } */
+
+    /* 方法五：利用grid布局 */
+    .q7 {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: 100px;
+      grid-template-columns: 200px;
+    }
+    .q7>.q7left {
+      background-color: aqua;
+    }
+    .q7>.q7right {
+      background-color: brown;
     }
   </style>
   <section class="q7">
