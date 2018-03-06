@@ -78,6 +78,26 @@
 - 174、display有哪些值？说明他们的作用
 - 175、css定义的权重
 - 242、position有哪些值,说下各自的作用
+
+### position的属性
+
+- static
+- relative
+- absolute
+- fixed
+- sticky 粘性定位
+
+    ```css
+    {
+        <!-- 距离页面顶部大于20px，表现为 position:relative; -->
+        <!-- 距离页面顶部小于20px，表现为 position:fixed; -->
+        <!-- 运用 position:sticky; 实现导航栏固定，也是最常见的用法 -->
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+    }
+    ```
+
 - 257、margin坍塌？水平方向会不会坍塌？ **margin坍塌就是编剧重叠；水平方向margin永远不会重叠**
 - 258、伪类和伪元素区别
 
