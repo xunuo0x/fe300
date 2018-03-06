@@ -12,32 +12,32 @@
 
 ### flex布局
 
-1. flex布局子元素的float、clear、vertical-align失效
-2. flex容器（flex container）&flex项目（flex item）
-3. flex container的属性
-    - flex-direction: row | row-reverse | column | column-reverse;主轴方向
-    - flex-wrap: nowrap | wrap | wrap-reverse;如果一条轴线排不下，如何换行
-    - flex-flow: <flex-direction> || <flex-wrap>;flex-direction属性和flex-wrap属性的简写形式
-    - justify-content: flex-start | flex-end | center | space-between | space-around;主轴上对齐方式
-    - align-items:  flex-start | flex-end | center | baseline | stretch;交叉轴上对齐方式
-    - align-content:  flex-start | flex-end | center | space-between | space-around | stretch;多根轴线的对齐方式
-4. flex item的属性
-    - order: <integer>; order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
-    - flex-grow: <number>; flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。**按比例分时，此项属性很有用**
-    - flex-shrink：<number>; flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
-    - flex-basis: flex-basis: <length> | auto; flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
-    - flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]; flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。
-    - align-self: auto | flex-start | flex-end | center | baseline | stretch; align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+    1. flex布局子元素的float、clear、vertical-align失效
+    2. flex容器（flex container）&flex项目（flex item）
+    3. flex container的属性
+        - flex-direction: row | row-reverse | column | column-reverse;主轴方向
+        - flex-wrap: nowrap | wrap | wrap-reverse;如果一条轴线排不下，如何换行
+        - flex-flow: <flex-direction> || <flex-wrap>;flex-direction属性和flex-wrap属性的简写形式
+        - justify-content: flex-start | flex-end | center | space-between | space-around;主轴上对齐方式
+        - align-items:  flex-start | flex-end | center | baseline | stretch;交叉轴上对齐方式
+        - align-content:  flex-start | flex-end | center | space-between | space-around | stretch;多根轴线的对齐方式
+    4. flex item的属性
+        - order: <integer>; order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
+        - flex-grow: <number>; flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。**按比例分时，此项属性很有用**
+        - flex-shrink：<number>; flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+        - flex-basis: flex-basis: <length> | auto; flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+        - flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]; flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。
+        - align-self: auto | flex-start | flex-end | center | baseline | stretch; align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
 
 ### grid布局
 
-1. grid容器（grid container） & grid项目（grid item）
-2. **grid-auto-flow**: row/column;网格默认流方向是row，可以通过grid-auto-flow属性把网格流的方向改变成column
-3. grid-template-rows: 60px 40px; grid-template-rows设置行高
-4. grid-template-columns: 40px 50px 60px; grid-template-columns设置列宽
-5. grid-column-gap: 创建列与列之间的间距
-6. grid-row-gap: 创建行与行之间的间距
-7. grid中单位fr; “fr”单位允许您将轨道大小设置为网格容器自由空间的一部分。
+    1. grid容器（grid container） & grid项目（grid item）
+    2. **grid-auto-flow**: row/column;网格默认流方向是row，可以通过grid-auto-flow属性把网格流的方向改变成column
+    3. grid-template-rows: 60px 40px; grid-template-rows设置行高
+    4. grid-template-columns: 40px 50px 60px; grid-template-columns设置列宽
+    5. grid-column-gap: 创建列与列之间的间距
+    6. grid-row-gap: 创建行与行之间的间距
+    7. grid中单位fr; “fr”单位允许您将轨道大小设置为网格容器自由空间的一部分。
 
 - 54、实现一个布局：左边固定宽度为200，右边自适应，而且滚动条要自动选择只出现最高的那个
 - 92、做一个两栏布局，左边fixed width，右边responsive，用纸笔手写
@@ -49,19 +49,19 @@
 
 ### 水平、垂直居中
 
-1. 垂直居中
-    1. 利用绝对定位，top: 50%;，然后margin-top偏移为 -height/2 px
-    2. 采用绝对定位，top/bottom/left/right均为0；再加margin:auto;
-    3. table布局
-    4. flex布局：align-items/justify-content均设为center
-    5. transform属性: 相对定位 + top:50%;left:50%; + translate(-50%, -50%);
+    1. 垂直居中
+        - 利用绝对定位，top: 50%;，然后margin-top偏移为 -height/2 px
+        - 采用绝对定位，top/bottom/left/right均为0；再加margin:auto;
+        - table布局
+        - flex布局：align-items/justify-content均设为center
+        - transform属性: 相对定位 + top:50%;left:50%; + translate(-50%, -50%);
 
-2. 水平居中
-    1. 利用绝对定位，left: 50%;，然后margin-left偏移 -width/2 px
-    2. 采用绝对定位，top/bottom/left/right均为0；再加margin:auto;
-    3. table布局
-    4. flex布局：align-items/justify-content均设为center
-    5. transform属性: 相对定位 + top:50%;left:50%; + translate(-50%, -50%);
+    2. 水平居中
+        - 利用绝对定位，left: 50%;，然后margin-left偏移 -width/2 px
+        - 采用绝对定位，top/bottom/left/right均为0；再加margin:auto;
+        - table布局
+        - flex布局：align-items/justify-content均设为center
+        - transform属性: 相对定位 + top:50%;left:50%; + translate(-50%, -50%);
 
 - 252、实现布局：左边一张图片，右边一段文字（不是环绕）
 - 261、使用flex布局实现三等分，左右两个元素分别贴到左边和右边，垂直居中
@@ -83,6 +83,25 @@
 
 > 浮动和清除浮动
 - 125、浮动的原理以及如何清除浮动
+
+### 浮动的原理
+
+    > 浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。
+
+### 清除浮动
+
+#### 清除浮动的原因
+
+    - 父元素的高度无法被撑开，影响与父元素同级的元素与浮动元素同级的非浮动元素（内联元素）会跟随其后
+    - 若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
+
+#### 清除浮动的方式
+
+    - 父级创建BFC清除浮动
+    - 使用:after伪元素清除浮动
+    - 使用:after :brfore 双伪元素清除浮动
+    - 浮动元素下添加额外标签清除浮动
+
 - 205、清除浮动有哪几种方式,分别说说
 
 > 盒模型
@@ -100,10 +119,10 @@
 
 #### JS获取盒模型宽&高
 
-- ```dom.style.width/height```（内联样式）
-- ```dom.currentStyle.width/height```（仅IE支持）
-- ```window.getComputedStyle(dom).width/height```
-- ```dom.getBoundingClientRect().width/height```
+    - dom.style.width/height（内联样式）
+    - dom.currentStyle.width/height（仅IE支持）
+    - window.getComputedStyle(dom).width/height
+    - dom.getBoundingClientRect().width/height
 
 #### BFC 块级格式化作用域
 
@@ -111,25 +130,25 @@
 
 ##### BFC特点
 
-- 内部的Box会在垂直方向，从顶部开始一个接一个地放置
-- Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加
-- BFC的区域不会与float box叠加
-- BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然
-- 计算BFC的高度时，浮动元素也参与计算
+    - 内部的Box会在垂直方向，从顶部开始一个接一个地放置
+    - Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加
+    - BFC的区域不会与float box叠加
+    - BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然
+    - 计算BFC的高度时，浮动元素也参与计算
 
 ##### 触发BFC
 
-- float 除了none以外的值
-- overflow 除了visible 以外的值（hidden，auto，scroll )
-- display (table-cell，table-caption，inline-block, flex, inline-flex)
-- position值为（absolute，fixed）
-- fieldset元素
+    - float 除了none以外的值
+    - overflow 除了visible 以外的值（hidden，auto，scroll )
+    - display (table-cell，table-caption，inline-block, flex, inline-flex)
+    - position值为（absolute，fixed）
+    - fieldset元素
 
 ##### BFC应用
 
-- BFC可以解决边距重叠问题
-- BFC不会与浮动元素重叠 => 用于布局
-- BFC用于清除浮动（计算BFC高度时，浮动元素也会参与计算）
+    - BFC可以解决边距重叠问题
+    - BFC不会与浮动元素重叠 => 用于布局
+    - BFC用于清除浮动（计算BFC高度时，浮动元素也会参与计算）
 
 > HTML类
 - 126、Html的语义化

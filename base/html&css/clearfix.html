@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>清除浮动</title>
+  <style>
+    html * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    .parent1 {
+      width: 100%;
+      overflow: hidden;
+      background-color: orange;
+    }
+    .child1 {
+      width: 200px;
+      height: 200px;
+      float: right;
+      background-color: navajowhite;
+    }
+  </style>
+  <section class="parent1">
+    <div class="child1">
+      <p>创建BFC清除浮动</p>
+    </div>
+  </section>
+  <br>
+  <style>
+    .parent2 {
+      width: 100%;
+      background-color: orange;
+    }
+    .child2 {
+      width: 200px;
+      height: 200px;
+      float: right;
+      background-color: navajowhite;
+    }
+    .clearfix2:after {
+      content: '';
+      clear: both;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+    .clearfix2:after {
+      /* 兼容IE */
+      zoom: 1;
+    }
+  </style>
+  <section class="parent2 clearfix2">
+    <div class="child2">
+      <p>使用:after伪元素清除浮动</p>
+    </div>
+  </section>
+  <br>
+  <style>
+    .parent3 {
+      width: 100%;
+      background-color: orange;
+    }
+    .child3 {
+      width: 200px;
+      height: 200px;
+      float: right;
+      background-color: navajowhite;
+    }
+    .clearfix3:before, .clearfix3:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .clearfix3:before, .clearfix3:after {
+      /* 兼容IE */
+      zoom: 1;
+    }
+  </style>
+  <section class="parent3 clearfix3">
+    <div class="child3">
+      <p>使用:after :brfore 双伪元素清除浮动</p>
+    </div>
+  </section>
+  <br>
+  <style>
+      .parent4 {
+        width: 100%;
+        background-color: orange;
+      }
+      .child4 {
+        width: 200px;
+        height: 200px;
+        float: right;
+        background-color: navajowhite;
+      }
+      .clearfix4 {
+        clear: both;
+        height: 0;
+
+      }
+    </style>
+    <section class="parent4">
+      <div class="child4">
+        <p>添加额外标签清除浮动</p>
+      </div>
+      <!-- <div class="clearfix4"></div> -->
+    </section>
+    <section style="height:100px;background-color: red;">
+      <p>父元素高度为0，下面的元素自动补位</p>
+    </section>
+</body>
+</html>
