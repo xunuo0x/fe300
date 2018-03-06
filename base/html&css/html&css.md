@@ -68,38 +68,73 @@
 
 > CSS类
 - 21、使用css实现一个三角形
+
+### css实现三角形
+
+```css
+.triangle-up {
+      width: 0;
+      height: 0;
+      border-bottom: 20px solid #EEB422;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+```
+
 - 70、做过css动画吗
 - 118、Css实现动画效果
 - 119、Animation还有哪些其他属性
 - 121、Css实现保持长宽比1:1
 - 138、为什么要用translate3d？  **translate3d 方法可以让浏览器开启GPU硬件加速模式**
 - 159、rem是什么？em是什么？如果上一层就是根root了，em和rem等价么？
+
+### rem 和 em
+
+- em和rem都是相对的字体单位
+- em的值是不固定的，会继承父级元素的字体大小
+- rem是相对root em；只修改根元素就成比例地调整所有字体大小
+
 - 165、怎么在页面里放置一个很简单的图标，不能用img和background-img？
 - 174、display有哪些值？说明他们的作用
+
+### display的属性
+
+    - none 此元素不会被显示并且不占用空间
+    - block 此元素显示为块级元素，此元素前后会带有换行符
+    - inline 默认，此元素会被显示为内联元素，元素前后没有换行符
+    - inline-block 行内块元素，前后无换行符
+    - inherit 规定应该从父类元素继承display属性的
+    - list-item 不设置宽度时，宽度撑满一行，支持宽高
+
 - 175、css定义的权重
 - 242、position有哪些值,说下各自的作用
 
 ### position的属性
 
-- static
-- relative
-- absolute
-- fixed
-- sticky 粘性定位
+    - static
+    - relative
+    - absolute
+    - fixed
+    - sticky 粘性定位
 
-    ```css
-    {
-        <!-- 距离页面顶部大于20px，表现为 position:relative; -->
-        <!-- 距离页面顶部小于20px，表现为 position:fixed; -->
-        <!-- 运用 position:sticky; 实现导航栏固定，也是最常见的用法 -->
-        position: -webkit-sticky;
-        position: sticky;
-        top: 20px;
-    }
-    ```
+```css
+{
+    <!-- 距离页面顶部大于20px，表现为 position:relative; -->
+    <!-- 距离页面顶部小于20px，表现为 position:fixed; -->
+    <!-- 运用 position:sticky; 实现导航栏固定，也是最常见的用法 -->
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+}
+```
 
 - 257、margin坍塌？水平方向会不会坍塌？ **margin坍塌就是编剧重叠；水平方向margin永远不会重叠**
 - 258、伪类和伪元素区别
+
+### 伪元素和伪类的区别
+
+    - 伪类用于当已有元素处于的某个状态时，为其添加对应的样式，这个状态是根据用户行为而动态变化的。
+    - 伪元素用于创建一些不在文档树中的元素，并为其添加样式。比如说，我们可以通过:before来在一个元素前增加一些文本，并为这些文本添加样式。虽然用户可以看到这些文本，但是这些文本实际上不在文档树中。
 
 > 浮动和清除浮动
 - 125、浮动的原理以及如何清除浮动
