@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>网易笔试</title>
+</head>
+<body>
+  <script>
+    function resolution(str) {
+      if (!str) {
+        return 0
+      }
+      let charset = str.split('')
+      let arr = []
+      charset.forEach(element => {
+        if (arr.indexOf(element) === -1) {
+          arr.push(element)
+        }
+      })
+      if (arr.length > 2) {
+        return 0
+      } else if (arr.length === 1) {
+        return 1
+      }
+        return 2
+    }
+    let str = 'AAA'
+    console.log(resolution(str))
+  </script>
+</body>
+</html>

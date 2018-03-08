@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object对象</title>
+</head>
+<body>
+  <script>
+    // 方法一：字面量
+    var o1 = {name: 'a1'}
+    var o2 = new Object({name: 'a2'})
+    // 方法二：构造函数
+    var M = function(name) {
+      this.name = name
+    }
+    var o3 = new M('a3')
+    // 方法三：Object.create
+    var p = {name: 'p'}
+    var o4 = Object.create(p)
+    var o5 = new M('a5')
+
+    M.prototype.sayName = function() {
+      console.log(this.name)
+    }
+
+    // 使用instanceof判断 构造函数
+    console.log(o3 instanceof M) // true
+    // 实际上判断
+    console.log(o3.__proto__ === M.prototype)
+    console.log(o3 instanceof Object) // true
+    // 但是呢，这不严谨
+    console.log(M.prototype.__proto__ === Object.prototype)
+    // 所以 o3 instanceof Object 为true
+    // 更严谨的方式
+    console.log(o3.__proto__.constructor === M)
+    console.log(o3.__proto__.constructor === Object)
+  </script>
+</body>
+</html>
