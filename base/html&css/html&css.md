@@ -55,7 +55,6 @@
         - table布局
         - flex布局：align-items/justify-content均设为center
         - transform属性: 相对定位 + top:50%;left:50%; + translate(-50%, -50%);
-    
     2. 水平居中
         - 利用绝对定位，left: 50%;，然后margin-left偏移 -width/2 px
         - 采用绝对定位，top/bottom/left/right均为0；再加margin:auto;

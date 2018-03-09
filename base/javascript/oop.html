@@ -24,8 +24,8 @@
     // 继承（本质原型链）
     
     /** 
-    * 1.借助构造函数实现继承
-    */
+     * 1.借助构造函数实现继承
+     */
 
     function Parent1() { 
       this.name = 'parent1'
@@ -42,8 +42,8 @@
     // console.log(ch1)
 
     /**
-    * 2.采用原型链的方式实现继承
-    */
+     * 2.采用原型链的方式实现继承
+     */
     function Parent2 () {
       this.name = 'parent2'
       this.count = [1, 2, 3]
@@ -61,6 +61,61 @@
     let ch22 = new Child2()
     // ch21.name修改不会影响到ch22.name
     // ch21.count修改会影响到ch22.count
+    
+    /*
+     * 3.组合方式继承
+     */
+     function Parent3 () {
+      //  console.log('执行parent3')
+       this.name = 'parent3'
+       this.count = [1, 2, 3]
+     }
+     function Child3 () {
+       Parent3.call(this)
+       this.type = 'child3'
+     }
+     Child3.prototype = new Parent3()
+
+     let ch31 = new Child3()
+     let ch32 = new Child3()
+    
+    /*
+     * 4.组合继承的优化1
+     */
+     function Parent4 () {
+      //  console.log('执行parent4')
+       this.name = 'parent4'
+       this.count = [1, 2, 3]
+     }
+     function Child4 () {
+       Parent4.call(this)
+       this.type = 'child4'
+     }
+     Child4.prototype = Parent4.prototype
+
+     let ch41 = new Child4()
+     let ch42 = new Child4()
+
+     /**
+      * 5.组合继承的优化2
+      */
+     function Parent5 () {
+       console.log('执行parent5')
+       this.name = 'parent5'
+       this.count = [1, 2, 3]
+     }
+     function Child5 () {
+       // 转换作用域传值
+       Parent5.call(this)
+       this.type = 'child5'
+     }
+     // Object.create(proto, [propertiesObject]) 方法会使用指定的原型对象及其属性去创建一个新的对象
+     Child5.prototype = Object.create(Parent5.prototype)
+     // 指定Child5的原型的构造函数
+     Child5.prototype.constructor = Child5
+
+     let ch51 = new Child5()
+     let ch52 = new Child5()
   </script>
 </body>
 </html>
