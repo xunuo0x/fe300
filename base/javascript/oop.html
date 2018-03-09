@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面向对象</title>
+</head>
+<body>
+  <script>
+    function Animal () {
+      this.name = 'name'
+    }
+
+    class Animal2 {
+      constructor () {
+        this.name = name
+      }
+    }
+
+    // 实例化
+    // console.log(new Animal(), new Animal2())
+
+    // 继承（本质原型链）
+    
+    /** 
+    * 1.借助构造函数实现继承
+    */
+
+    function Parent1() { 
+      this.name = 'parent1'
+    }
+    function Child1() { 
+      Parent1.call(this) // apply亦可实现继承
+      this.type = 'child1'
+    }
+    // 无法继承原型链上的方法，只是部分继承
+    Parent1.prototype.say = function () {
+      console.log('parent say')
+    }
+    let ch1 = new Child1()
+    // console.log(ch1)
+
+    /**
+    * 2.采用原型链的方式实现继承
+    */
+    function Parent2 () {
+      this.name = 'parent2'
+      this.count = [1, 2, 3]
+    }
+    Parent2.prototype.walk = function () {
+      console.log('parent2 walk')
+    }
+    function Child2 () {
+      this.type = 'child2'
+    }
+    Child2.prototype = new Parent2()
+    let ch2 = new Child2()
+    // console.log(ch2)
+    let ch21 = new Child2()
+    let ch22 = new Child2()
+    // ch21.name修改不会影响到ch22.name
+    // ch21.count修改会影响到ch22.count
+  </script>
+</body>
+</html>

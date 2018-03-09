@@ -19,6 +19,23 @@
     // 方法三：Object.create
     var p = {name: 'p'}
     var o4 = Object.create(p)
+    var o41 = Object.create(o3, {
+      name: {
+        configurable: true,
+        enumerable: false,
+        value: 'aa',
+        writable: true
+      },
+      pname: {
+        get: function () {
+          return this.name+'11'
+        },
+        set: function (newValue) {
+          this.name = newValue + '00'
+        }
+      }
+    })
+    console.log(o41)
     var o5 = new M('a5')
 
     M.prototype.sayName = function() {
@@ -36,6 +53,23 @@
     // 更严谨的方式
     console.log(o3.__proto__.constructor === M)
     console.log(o3.__proto__.constructor === Object)
+
+    // 模拟new运算符你
+    let new2 = function (func,s) {
+      // 创建一个新对象，继承自func.prototype
+      var o = Object.create(func.prototype)
+      // 执行构造函数，指定上下文
+      var k = func.call(o,s)
+      // 判断执行结果的类型
+      if (typeof k === 'object') {
+        return k
+      }
+      return o
+    }
+    let o6 = new2(M,'sss')
+    console.log(o6)
+    console.log(o6 instanceof M)
+    console.log(o6.__proto__.constructor === M)
   </script>
 </body>
 </html>
