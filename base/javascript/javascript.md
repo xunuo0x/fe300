@@ -26,6 +26,10 @@
 
 ### jsonp（Json Padding）
 
+    - 动态添加script标签，因为script标签没有跨域限制
+    - 客户端注册callback，将callback函数名作为参数传至服务器
+    - 注册全局函数，服务器返回结果执行此全局函数
+    - 执行后，删除标签，同时将全局函数置为null
 
 
 192、ajax的过程以及 readyState几个状态的含义
@@ -106,10 +110,39 @@
 
 65、介绍一下cookie,localstorage,sessionstorage,session
 116、Cookie 是否会被覆盖，localStorage是否会被覆盖
+
+    - cookie会被覆盖；
+    - localStorage类似于sessionStorage；区别在于生命周期不同
+
 129、如果页面初始载入的时候把ajax请求返回的数据存在localStorage里面，然后每次调用的时候去localStorage里面取数，是否可行。
+
+    - 无法保证数据的实时性；请求和实时性需要取舍
+
 194、cookie与session的区别
 222、浏览器缓存的区别
-239、cookies，sessionStorage 和 localStorage 的区别
+
+### 浏览器缓存：强缓存&协商缓存
+
+    - 强缓存
+
+    ![强缓存](https://camo.githubusercontent.com/ee0025892ed1350c27caa0ed5d2af441aea6ca49/687474703a2f2f6f6d75666a723562762e626b742e636c6f7564646e2e636f6d2f2545352542432542412545372542432539332545352541442539382e706e67)
+
+    - 协商缓存
+
+    ![协商缓存](https://camo.githubusercontent.com/109cdc67eda2ad3dbbfa0c35971d1d18559ef5ff/687474703a2f2f6f6d75666a723562762e626b742e636c6f7564646e2e636f6d2f2545352538442538462545352539352538362545372542432539332545352541442539382e706e67)
+
+    1.看看是否命中强缓存，如果命中直接使用缓存
+    2.如果没有命中强缓存，请求服务器是否命中协商缓存
+    3.如果命中协商缓存，服务器返回**304**告诉浏览器使用本地缓存
+    4.否则，返回最新资源
+
+239、cookies(4K)，sessionStorage(5M) 和 localStorage(5M) 的区别
+
+    - localStorage中存储的的数据没有过期的限制，sessionStorage在会话结束后会被清除
+    - cookie由服务端生成，用于标识用户，每次都会携带在HTTP头
+    - storage用于浏览器缓存，不参与和服务器的通信
+    - session存在服务端，cookie存在客户端浏览器
+    - 安全考虑使用session
 
 > ## Q12：插件开发
 
@@ -125,6 +158,9 @@
 > ## Q14：计算机网络
 
 9、OSI模型，HTTP,TCP,UDP分别在哪些层
+
+![网络模型](http://markdown-1253575843.coscd.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180311223850.png)
+
 111、网络分层结构
 130、304是什么意思？有没有方法不请求不经过服务器直接使用缓存
 131、http请求头有哪些字段
