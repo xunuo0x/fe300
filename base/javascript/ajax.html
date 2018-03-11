@@ -7,6 +7,159 @@
   <title>请求通信</title>
 </head>
 <body>
-  
+  <script>
+    let util = {}
+    /*
+     * 实现对象的浅复制 
+     */
+    util.extend = function (dst, obj) {
+      for (let i in obj) {
+        if (obj.hasOwnProperty(i)) {
+          dst[i] = obj[i]
+        }
+      }
+    }
+
+    /*
+     * 原生ajax 
+     */
+    util.json = function (options) { 
+      let opt = {
+        url: '',
+        type: 'get',
+        data: {},
+        success: function (res) {
+          console.log(res)
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      }
+      util.extend(opt, options)
+      if (opt.url) {
+        let xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
+        let data = opt.data
+        let url = opt.url
+        let type = opt.type.toUpperCase()
+        let dataArr = []
+        
+        for (let k in data) {
+          dataArr.push(k + '=' + data[k])
+        }
+        let postfix = dataArr.join('&')
+        if (type === 'GET') {
+          url += '?' + postfix
+          // 替换结尾的?
+          url.replace(/\?$/g, '')
+          xhr.open(type, url, true)
+          xhr.send()
+        }
+        if (type === 'POST') {
+          xhr.open(type, url, true)
+          xhr.sendRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+          xhr.send(postfix)
+        }
+
+        xhr.onload = function () {
+          if (xhr.status === 200 || xhr.status === 304) {
+            let res
+            if (opt.success && opt.success instanceof Function) {
+              res = xhr.responseText
+              if (typeof res === 'string') {
+                res = JSON.parse(res)
+                opt.success.call(xhr, res)
+              }
+            } else {
+              if (opt.err && opt.err instanceof Function) {
+                opt.error.call(xhr, opt)
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /*
+     * Promise实现Ajax 
+     */
+    util.pjson = function (options) {
+      let opt = {
+        url: '',
+        type: 'get',
+        data: {},
+        success: function (res) {
+          console.log(res)
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      }
+      util.extend(opt, options)
+      return  new Promise((resolve, reject) => {
+        let xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
+        let data = opt.data
+        let url = opt.url
+        let type = opt.type.toUpperCase()
+        let dataArr = []
+        
+        for (let k in data) {
+          dataArr.push(k + '=' + data[k])
+        }
+        let postfix = dataArr.join('&')
+        if (type === 'GET') {
+          url += '?' + postfix
+          // 替换结尾的?
+          url.replace(/\?$/g, '')
+          xhr.open(type, url, true)
+          xhr.send()
+        }
+        if (type === 'POST') {
+          xhr.open(type, url, true)
+          xhr.sendRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+          xhr.send(postfix)
+        }
+
+        xhr.onload = function () {
+          if (xhr.status === 200 || xhr.status === 304) {
+            let res
+            if (opt.success && opt.success instanceof Function) {
+              res = xhr.responseText
+              if (typeof res === 'string') {
+                res = JSON.parse(res)
+                resolve(res)
+                // opt.success.call(xhr, res)
+              }
+            } else {
+              if (opt.err && opt.err instanceof Function) {
+                reject(opt.err)
+                // opt.error.call(xhr, opt)
+              }
+            }
+          }
+        }
+      })
+    }
+
+    let options = {
+        url: 'http://web.juhe.cn:8080/finance/exchange/rmbquot',
+        type: 'get',
+        data: {
+          key: 'f39a2063aa6dac987919676d756a84b4'
+        },
+        success: function (res) {
+          console.log(res)
+        },
+        error: function (err) {
+          console.log(err)
+        }
+      }
+    util.json(options)
+    let pjson = util.pjson(options)
+    pjson.then((res) => {
+      console.log(res)
+    }).catch((err) => { 
+      console.log(err)
+    })
+  </script>
 </body>
 </html>

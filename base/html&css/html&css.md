@@ -233,7 +233,8 @@
 - 245、移动端性能优化
 - 250、repaint和reflow区别
 
-### 回流 & 重绘 
+### 回流 & 重绘
+
 > 参考[浏览器的回流与重绘 (Reflow & Repaint)](https://juejin.im/post/5a9923e9518825558251c96a?utm_medium=fe&utm_source=weixinqun)
 > **结论：回流必将引起重绘，重绘不一定会引起回流**
 

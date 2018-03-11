@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Defer (executor) {
+      if (!(this instanceof Defer)) {
+        throw 'Defer is a constructor and should be called width "new" keyword'
+      }
+      if (typeof executor !== 'function') {
+        throw 'Defer params must be a function'
+      }
+      try {
+        executor.call(this, this.resolve.bind(this), this.reject.bind(this))
+      } catch (e) {
+        this.reject(e)
+      }
+    }
+    Defer.prototype = {
+      constructor: Defer,
+      resolve: function (value) {
+        this.value = value
+        this.status = 'resolved'
+      },
+      reject: function (reason) {
+        this.rejectReason = reason
+        this.status = 'rejected'
+      }
+    }
+  </script>
+</body>
+</html>

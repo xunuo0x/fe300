@@ -14,7 +14,20 @@
 84、如何做一个AJAX Request？
 93、讲一下AJAX Request
 106、ajax，原生ajax的四个过程
+
+### 原生Ajax
+
+    - 创建XMLHttpRequest对象
+    - 连接到服务器 xhr.open()
+    - 发送请求 xhr.send()
+    - 接收返回值，监听onReadyStateChange事件
+
 128、Jsonp的原理。怎么去读取一个script里面的数据？
+
+### jsonp（Json Padding）
+
+
+
 192、ajax的过程以及 readyState几个状态的含义
 228、你所了解的跨域的方法都说说看你了解的？
 

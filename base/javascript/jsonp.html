@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手写JSONP</title>
+</head>
+<body>
+  <script>
+    let util = {}
+    util.jsonp = function (url, data, callback) {
+      let postfix = url.endsWith('?') ? '' : '?'
+      // 创建请求url
+      for (k in data) {
+        postfix+=`${k}=${data[k]}&`
+      }
+      // 处理回调函数
+      let cbName = `callback_${Math.random().toString().replace('.','')}`
+      postfix += `callback=${cbName}`
+      url += postfix
+      // 创建script标签
+      let scriptEl = document.createElement('script')
+      
+      scriptEl.src = decodeURI(url)
+      console.log(decodeURI(url))
+      // 挂载回调函数
+      window[cbName] = function (res) {
+        callback(res)
+        document.body.removeChild(scriptEl)
+      }
+      document.body.appendChild(scriptEl)
+    }
+
+    let url = 'http://suggest.taobao.com/sug'
+    let data = {
+      code: 'utf-8',
+      q: '卫衣'
+    }
+    let callback = function (res) {
+      console.log(res)
+    }
+    util.jsonp(url, data, callback)
+  </script>
+</body>
+</html>
