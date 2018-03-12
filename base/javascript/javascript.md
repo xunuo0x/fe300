@@ -31,7 +31,6 @@
     - 注册全局函数，服务器返回结果执行此全局函数
     - 执行后，删除标签，同时将全局函数置为null
 
-
 192、ajax的过程以及 readyState几个状态的含义
 228、你所了解的跨域的方法都说说看你了解的？
 
@@ -83,6 +82,38 @@
 243、写个从几个li中取下标的闭包代码
 
 > ## Q7：DOM类
+
+### DOM事件级别
+
+    1. DOM0 btn.onclick = function() {alert('Hello World');}
+    2. DOM2 btn.addEventListener('click', showFn, false);
+    3. DOM3 DOM3级事件在DOM2级事件的基础上添加了更多的事件类型
+
+### DOM事件模型：冒泡和捕获
+
+#### 1.事件捕获
+
+    - 自上而下
+    - addEventListener('click', showFn, true) 第三个参数为true；**由外向里**
+    - 捕获流程:window->document->html->body->父元素->子元素->目标元素
+
+#### 2.目标阶段
+
+    - 事件到达目标元素
+
+#### 3.事件冒泡
+
+    - 自下而上
+    - addEventListener('click', showFn, false) 第三个参数为false；**由里向外**
+    - 冒泡流程:window<-document<-html<-body<-父元素<-子元素<-目标元素
+
+### Event对象
+
+    - e.stopPropagation() 阻止事件向上传播
+    - e.preventDefault() 取消事件的默认行为
+    - e.stopImmediatePropagation() 阻止同类事件
+    - e.currentTarget 当前绑定事件的元素，用于事件代理
+    - e.target 当前点击的元素
 
 102、冒泡和捕获，事件流哪三个阶段？
 103、实现事件代理
@@ -221,3 +252,16 @@ HTTPS
 > ## Q23：H5 API
 
 234、h5有个api能定位你知道是哪个吗？
+
+    - geolocation对象
+    ```
+    if ("geolocation" in navigator) {
+        /* 地理位置服务可用 */
+    } else {
+        /* 地理位置服务不可用 */
+    }
+    // 获取位置信息
+    navigator.geolocation.getCurrentPosition(function(position) {
+        do_something(position.coords.latitude, position.coords.longitude);
+    });
+    ```
