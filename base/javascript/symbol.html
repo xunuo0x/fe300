@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Symbol</title>
+</head>
+<body>
+  <script>
+    // Symbol表示独一无二的值
+    let s = Symbol()
+    console.log(typeof s)
+
+    let p = new Promise((resolve, reject)=>{
+      resolve(1)
+    })
+    let q = {
+      then: function () {
+        console.log(1)
+      }
+    }
+    function isPromise(value) {
+      return value && typeof value.then === 'function'
+    }
+    Object.prototype.toString.call(p)
+    console.log(isPromise(p))
+    ;(function () {
+      console.log(111)
+    })()
+
+    let arr = ['a', 1, 3, NaN, 'NaN', NaN]
+    let set = new Set(arr)
+    
+    console.log(set.values())
+
+    function fuck (x, ...arr) {
+      console.log(arr)
+    }
+    fuck(1)
+
+  </script>
+</body>
+</html>

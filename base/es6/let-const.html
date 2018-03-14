@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>let-const</title>
+</head>
+<body>
+  <script>
+    // 不存在变量提升
+    // 暂时性死区=>typeof不在安全
+    /*
+     * typeof x
+     * let x // 在此之前都是x的死区
+     */
+    // for循环计数器
+    // 块级作用域
+    var a = []
+    for (var i =0; i< 10; i++) {
+      a[i] = function () {
+        console.log(i)
+      }
+    }
+
+    let b = []
+    for (let i =0; i< 10; i++) {
+      b[i] = function () {
+        console.log(i)
+      }
+    }
+    typeof x
+
+    a[6]()
+    b[6]()
+    // const常量，无法修改
+  </script>
+</body>
+</html>

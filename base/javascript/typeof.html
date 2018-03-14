@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>typeof 和 instanceof</title>
+</head>
+<body>
+  <script>
+    // instanceof的原理：
+    // a instanceof Foo
+    // 其实是判断a.__proto__ === Foo.prototype
+    // 用来判断继承
+    function Type () {}
+    var a = {}
+    // a.__proto__ = Type.prototype
+    a.__proto__ = Type.prototype
+    console.log(a)
+    console.log(a instanceof Type)
+
+    var a;
+    console.log("1:" + typeof a);
+    var b = null;
+    console.log("2:" + typeof b);
+    var c = undefined;
+    console.log("3:" + typeof c);
+    var d = new Object;
+    console.log("4:" + typeof d);
+    var e = function() {};
+    console.log("5:" + typeof e);
+    var f = {};
+    console.log("6:" + typeof f);
+    var g = '12';
+    console.log("7:" + typeof g);
+    var h = [];
+    console.log("8:" + typeof h);
+    var i = true;
+    console.log("9:" + typeof i);
+    var j = 123;
+    console.log("10:" + typeof j);
+    var k = NaN;
+    console.log("11:" + typeof k);
+    var l = /^[-+]?\d+$/;
+    console.log("12:" + typeof l);
+
+  </script>
+</body>
+</html>
