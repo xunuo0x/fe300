@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6 字符串扩展</title>
+</head>
+<body>
+  <script>
+    // 1. 字符串添加了遍历器接口
+    for (let codePoint of 'foo') {
+      console.log(codePoint)
+    }
+    // 2. charAt() 返回给定位置字符
+    let code = 'abc'.charAt(1)
+    console.log(code)
+    // 3. includes(),startsWith(),endsWith() 均返回boolean值
+    // 第二个参数为开始查询位置
+    let s = 'Hello World'
+    console.log(s.includes('llo'))
+    console.log(s.startsWith('l', 2))
+    console.log(s.endsWith('d'))
+    // includes() polyfill
+    if (!String.prototype.includes) {
+      String.prototype.includes = function (search, start) {
+        'use strict'
+        if (typeof start !== 'number') {
+          start = 0
+        }
+        if (search.length + start > this.length) {
+          return false
+        } else {
+          return this.indexOf(search, start) !== -1
+        }
+      }
+    }
+    // startsWith() polyfill
+    if (!String.prototype.startsWith) {
+      String.prototype.startsWith = function (search, start) {
+        'use strict'
+        if (typeof start !== 'number') {
+          start = 0
+        }
+        if (search.length + start > this.length) {
+          return false
+        } else {
+          return this.indexOf(search, start) === 0
+        }
+      }
+    }
+    String.prototype.startsWith = function (search, start) {
+      'use strict'
+      if (typeof start !== 'number') {
+        start = 0
+      }
+      if (search.length + start > this.length) {
+        return false
+      } else {
+        return this.indexOf(search, start) === start
+      }
+    }
+
+    // 4. repeat() 返回重复n次字符串
+    // console.log('a'.repeat(2))
+    if (!String.prototype.repeat) {
+      String.prototype.repeat = function (count) {
+        while (count > 1) {
+          this.concat(this)
+        }
+        return this
+      }
+    }
+    // 凡是涉及到数字的，要注意NaN
+    // Number.isNaN Polyfill
+    Number.isNaN = Number.isNaN || function (value) {
+      return typeof value === 'number' && isNaN(value)
+    }
+    console.log(isNaN(undefined))
+
+    // 5.padStart() padEnd()
+    console.log('x'.padStart(4,'ab'))
+    if (!String.prototype.padStart) {
+      String.prototype.padStart = function (count, paddStr) {
+        if (count <= 0) {
+          return String(this)
+        } else {
+          let paddString = paddStr.repeat(Math.ceil(cout/paddStr.length))
+          return paddStr.substr(0, count) + String(this)
+        }
+      }
+    }
+    String.prototype.padStart = function (count, paddStr) {
+        if (count <= 0) {
+          return String(this)
+        } else {
+          let paddString = paddStr.repeat(Math.ceil(count/paddStr.length))
+          return paddString.substr(0, count-1) + String(this)
+        }
+      }
+      console.log('x'.padStart(6,'abc'))
+
+  </script>
+</body>
+</html>

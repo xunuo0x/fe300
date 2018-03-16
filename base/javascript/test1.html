@@ -64,7 +64,58 @@
       return arr
     }
     console.log(merge2(arr2))
+
+    let val = 4
+    let arr0 = [-1,2,3,5,8,6,4,1,0]
     
+    let mid = arr0[parseInt(arr0.length / 2)] > arr0[parseInt(arr0.length / 2) + 1] ? arr0[parseInt(arr0.length / 2)] : arr0[parseInt(arr0.length / 2)+1] 
+    let left = arr0.slice(0, arr0.indexOf(mid)+1)
+    let right = arr0.slice(arr0.indexOf(mid))
+    console.log(right)
+
+    function binary_right(arr,low,high,key) {
+      if (low > high){
+          return -1;
+      }
+      let mid = parseInt((high + low) / 2)
+      if(arr[mid] === key){
+          return mid
+      }else if (arr[mid] > key){
+          high = mid - 1
+          return binary_right(arr, low, high, key);
+      }else if (arr[mid] < key){
+          low = mid + 1
+          return binary_right(arr, low, high, key);
+      }
+    }
+
+    function binary_left(arr,low,high,key) {
+      if (low > high){
+          return -1
+      }
+      let mid = parseInt((high + low) / 2)
+      if(arr[mid] === key){
+        return mid
+      }else if (arr[mid] > key){
+        low = mid + 1
+        return binary_left(arr, low, high, key);
+      }else if (arr[mid] < key){
+        high = mid - 1
+        return binary_left(arr, low, high, key);
+      }
+    }
+
+    let rightPos = binary_right(right,0,right.length-1,val)
+    let leftPos = binary_left(left,0,left.length-1,val)
+
+    let pos = 0
+    if (rightPos > leftPos) {
+      pos = left.length + rightPos
+    } else {
+      pos = leftPos
+    }
+    console.log(pos-1)
+
   </script>
 </body>
 </html>
