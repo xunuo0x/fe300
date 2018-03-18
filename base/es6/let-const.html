@@ -34,6 +34,44 @@
     a[6]()
     b[6]()
     // const常量，无法修改
+    var count = 12
+    {
+      let count = 13
+    }
+
+    console.log(typeof tmp==='undefined')
+    {
+      let tem = 123
+    }
+
+    var funcs = []
+    for (var i = 0; i< 10; i++) {
+      funcs.push((function (val) {
+        return function () {
+          console.log(val)
+        }
+      })(i))
+    }
+    funcs.forEach((item)=> {
+      item()
+    })
+
+    console.log('-------------------------')
+
+    let obj = {
+      data: 1,
+      method: function () {}
+    }
+
+    for (let item in obj) {
+      console.log(item)
+      console.log(obj[item])
+    }
+
+    for (let item of Object.keys(obj)) {
+      console.log(item)
+    }
+
   </script>
 </body>
 </html>

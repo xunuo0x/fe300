@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Class</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor (name) {
+        this.name = name
+      }
+      say() {
+        console.log(this.name)
+      }
+      get fullName () {
+        return `wang${this.name}`
+      }
+      set fullName (value) {
+        this.name = value
+      }
+    }
+
+    let a = new Person('aa')
+    console.log(a)
+    for (let key in a) {
+      console.log(key)
+    }
+    function People(name) {
+      this.name = name
+    }
+    People.prototype.talk = function () {
+      console.log(this.name)
+    }
+    let b = new People('bb')
+    for (let key in b) {
+      console.log(key)
+    }
+    function M() {
+      return {
+        name: 'm'
+      }
+    }
+    let m = new M()
+
+    function MyArray() {
+      Array.call(this, arguments)
+    }
+    MyArray.prototype = Object.create(Array.prototype, {
+    constructor: {
+      value: MyArray,
+      writable: true,
+      configurable: true,
+      enumerable: true
+      }
+    })
+
+    class MyOwnArray extends Array {
+      constructor (...args) {
+        super(...args)
+      }
+
+      static get [Symbol.species]() {
+        return Array
+      }
+    }
+    let newArr = new MyOwnArray(1,2,3)
+    
+    class Arr extends Array {
+      constructor(...args) {
+        super(...args)
+      }
+    }
+
+    let newArr1 = new Arr()
+    newArr1[0] = 1
+    
+  </script>
+</body>
+</html>
