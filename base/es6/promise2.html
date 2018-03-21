@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise串行执行</title>
+</head>
+<body>
+  <script>
+    // let step1 = function(resolve, reject) {
+    //   console.log('this is step1')
+    //   setTimeout(() => {
+    //     resolve('step1 resolve')
+    //   }, 1000)
+    // }
+    // let step2 = function(resolve, reject) {
+    //   console.log('this is step2')
+    //   setTimeout(() => {
+    //     resolve('step2 resolve')
+    //   }, 1000)
+    // }
+    // let step3 = function (resolve, reject) {
+    //   console.log('this is step3')
+    //   setTimeout(() => {
+    //     resolve('step3 resolve')
+    //   }, 1000)
+    // }
+    // new Promise(step1).then((val)=>{
+    //   console.log(val)
+    //   return new Promise(step2)
+    // }).then((val)=> {
+    //   console.log(val)
+    //   return new Promise(step3)
+    // }).then((val)=>{
+    //   console.log(val)
+    // }).catch((err)=>{
+    //   console.log(err)
+    // })
+
+    let step1 = function () {
+      let val = 1
+      console.log(`this is step1 , the value is ${val}`)
+      if(val > 0){
+        return Promise.resolve(val)
+      }
+      return Promise.reject(val)
+    }
+
+    let step2 = function (val) {
+      val += 1
+      console.log(`this is step2 , the value is ${val}`)
+      return Promise.resolve(val)
+    }
+
+    let step3 = function (val) {
+      val += 1
+      console.log(`this is step3 , the value is ${val}`)
+      return Promise.resolve(val)
+    }
+
+    // step1().then((val)=>{
+    //   return step2(val)
+    // }).then((val)=>{
+    //   return step3(val)
+    // }).then((val)=>{
+    //   console.log(`finally, the value is ${val}`)
+    // })
+
+    // let steps = [step1, step2, step3]
+    // steps.reduce((promise, fn, index)=>{
+    //   console.log(index)
+    //   return promise.then((val)=>{
+    //     return fn(val)
+    //   })
+    // }, Promise.resolve())
+
+    function step21() {
+      let val = 1
+      console.log(`this is step1 , the value is ${val}`)
+      return val
+    }
+
+    function step22(val) {
+      val += 1
+      console.log(`this is step2 , the value is ${val}`)
+      return val
+    }
+
+    async function step23(val) {
+      val += 1
+      console.log(`this is step3 , the value is ${val}`)
+      return val
+    }
+    
+    // (async () => {
+    //   let val = await step21()
+    //   val = await step22(val)
+    //   val = await step23(val)
+    // })()
+    let steps = [step21, step22, step23]
+    async function foo2(val, fn, index) {
+      if (index === 0) {
+        val = await fn()
+        console.log(val)
+      }else{
+        val = await fn(val)
+        console.log(val)
+      }
+      return val
+    }
+    steps.reduce(foo2, 0)
+    // async function foo () {
+    //   let val
+    //   for (let i = 0; i < steps.length; i++) {
+    //     if (i===0) {
+    //       val = await steps[i]()
+    //     }else {
+    //       val = await steps[i](val)
+    //     }
+    //   }
+    // }
+    // foo()
+
+  </script>
+</body>
+</html>

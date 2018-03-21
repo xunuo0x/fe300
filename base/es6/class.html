@@ -26,7 +26,7 @@
     let a = new Person('aa')
     console.log(a)
     for (let key in a) {
-      console.log(key)
+      console.log('key',key)
     }
     function People(name) {
       this.name = name
@@ -76,7 +76,28 @@
 
     let newArr1 = new Arr()
     newArr1[0] = 1
-    
+
+    class Child {
+      constructor () {
+        this.value = 0
+      }
+
+      get prop () {
+        return this.value
+      }
+
+      set prop (newVal) {
+        this.value = newVal
+      }
+    }
+    class Son extends Child{
+      constructor () {
+        super()
+      }
+    }
+
+    let ch1 = new Child()
+    let son1 = new Son()
   </script>
 </body>
 </html>
