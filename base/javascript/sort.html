@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sort</title>
+</head>
+<body>
+  <script>
+    function bubbleSort(arr) {
+      for (let i = 0; i<arr.length; i++) {
+        for (let j = 0; j <arr.length-1-i; j++) {
+          if(arr[j]>arr[j+1]) {
+            let temp = arr[j]
+            arr[j] = arr[j+1]
+            arr[j+1] = temp
+          }
+        }
+      }
+      return arr
+    }
+
+    function unique(arr) {
+      const seen = new Map()
+      let ret = arr.filter((item) => {
+        if (!seen.has(item)) {
+          seen.set(item, true)
+        }
+        return !seen.has(item)
+      })
+    }
+
+    let arr = [1, 4, 5, 2, 9]
+    console.log(bubbleSort(arr))
+  </script>
+</body>
+</html>

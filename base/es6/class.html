@@ -98,6 +98,19 @@
 
     let ch1 = new Child()
     let son1 = new Son()
+
+    let alice = {
+      name: 'alice',
+      props: {
+        name: 'bob',
+        sayName () {
+          console.log(this.name)
+        }
+      }
+    }
+    alice.props.sayName()
+    let item = alice.props
+    item.sayName()
   </script>
 </body>
 </html>

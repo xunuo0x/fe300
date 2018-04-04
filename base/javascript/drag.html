@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>拖拽</title>
+  <style>
+    html * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body{
+      height: 100%;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      background-color: aquamarine;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #dragDiv {
+      width: 120px;
+      height: 120px;
+      background-color: bisque;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .over {
+      opacity: .5;
+    }
+  </style>
+</head>
+<body>
+  <section class="container" id="contianer">
+  </section>
+  <span id="dragDiv" draggable="true">
+  </span>
+  <script>
+    (function() {
+      let x = 0,y = 0,deltaX = 0,deltaY = 0,curX = 0, curY = 0
+      let dragDiv = {
+        id: '',
+        init: function () {
+          let me = this
+          me.div = document.querySelector('#dragDiv')
+          // x = me.div.offsetLeft
+          // y = me.div.offsetTop
+          x = me.div.getBoundingClientRect().left
+          y = me.div.getBoundingClientRect().top
+          console.log(x,y)
+          // console.log(me.div.getBoundingClientRect().left,me.div.getBoundingClientRect().left)
+          me.container = document.querySelector('#contianer')
+          me.div.addEventListener('dragstart', me.onDragStart, false)
+          me.container.addEventListener('dragenter', me.onDragEnter, false)
+          me.container.addEventListener('dragover', me.onDragOver, false)
+          me.container.addEventListener('drop', me.onDrop, false)
+          me.container.addEventListener('click', me.onClick, false)
+          me.div.addEventListener('dragend', me.onDragEnd, false)
+        },
+        onDragStart: function (e) {
+          console.log('onDragStart')
+          e.dataTransfer.setData('text/plain', 'dragDiv');
+        },
+        onDragEnter: function (e) {
+          console.log('onDragEnter')
+        },
+        onDragOver: function (e) {
+          e.preventDefault()
+        },
+        onDrop: function (e) {
+          console.log('onDrop')
+        },
+        onDragEnd: function (e) {
+          var dragDivDom = document.querySelector(`#${e.target.id}`)
+          console.log('onDragEnd')
+          console.log(e)
+          console.log('before',x,y)
+          y += e.layerY
+          x += e.layerX
+          console.log('after',x,y)
+          if (x<0) {
+            x=0
+          }
+          if (y<0) {
+            y=0
+          }
+          dragDivDom.style.top = `${y}px`
+          dragDivDom.style.left = `${x}px`
+        },
+        onClick: function (e) {
+          console.log(e)
+        }
+      }
+      dragDiv.init()
+    })()
+  </script>
+</body>
+</html>

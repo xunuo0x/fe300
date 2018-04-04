@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wangyi</title>
+</head>
+<body>
+  <script>
+    var n = parseInt(readline());
+    var ways = readline().spilt('')
+    var ans = 0;
+    for(var i = 0;i < n; i++){
+      if (ways[i] === 'R') {
+        ans+=90
+      }else if(ways[i] === 'L'){
+        ans-=90
+      }
+    }
+    if (Math.cos(ans) ===1&& Math.sin(ans) === 0) {
+      print('N');
+    }else if (Math.cos(ans) ===0&& Math.sin(ans) === 1){
+      print('E')
+    }else if (Math.cos(ans) ===-1&& Math.sin(ans) === 0){
+      print('S')
+    }else if (Math.cos(ans) ===0&& Math.sin(ans) === -1){
+      print('W')
+    }
+
+  </script>
+</body>
+</html>

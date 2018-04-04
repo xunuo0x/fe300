@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>重建二叉树</title>
+</head>
+<body>
+  <script>
+    function TreeNode (x) {
+      this.val = x
+      this.left = null
+      this.right = null
+    }
+    function reConstruct(pre, mid) {
+      if (pre.length === 0) {
+        return null
+      }
+      let left_pre,right_pre,left_mid,right_mid = []
+      let head = new TreeNode(pre[0])
+      let root = mid.indexOf(pre[0])
+      left_pre = pre.slice(1, root+1)
+      right_pre = pre.slice(root+1)
+      left_mid = mid.slice(0, root)
+      right_mid = mid.slice(root+1)
+      head.left = reConstruct(left_pre, left_mid)
+      head.right = reConstruct(right_pre, right_mid)
+      return head
+    }
+    let pre = [1,2,4,7,3,5,6,8]
+    let mid = [4,7,2,1,5,3,8,6]
+    console.log(reConstruct(pre, mid))
+  </script>
+</body>
+</html>

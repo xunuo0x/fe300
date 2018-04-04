@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>闭包</title>
+</head>
+<body>
+  <script>
+    function createFns() {
+      let ret = []
+      for (let i = 0; i < 10; i++) {
+        ret[i] = function() {
+          console.log(i)
+        }
+      }
+      return ret
+    }
+    let fns = createFns()
+
+    function createFns2() {
+      var ret = []
+      for (var i = 0; i < 10; i++) {
+        ret[i] = (function (i) {
+          return function () {
+            console.log(i)
+          }
+        })(i)
+      }
+      return ret
+    }
+    var fns2 = createFns2()
+  </script>
+</body>
+</html>

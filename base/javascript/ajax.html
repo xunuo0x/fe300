@@ -19,11 +19,13 @@
         }
       }
     }
+    
+    
 
     /*
      * 原生ajax 
      */
-    util.json = function (options) { 
+    util.json = function (options) {
       let opt = {
         url: '',
         type: 'get',
@@ -160,6 +162,17 @@
     }).catch((err) => { 
       console.log(err)
     })
+
+
+    // 封装ajax方法
+    
+
+    // 每隔十秒刷新页面
+    setInterval(function(){  
+      window.location.reload(true);        
+    },1000); 
+
+
   </script>
 </body>
 </html>

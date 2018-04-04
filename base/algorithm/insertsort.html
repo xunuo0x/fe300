@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>InsertSort</title>
+</head>
+<body>
+  <script>
+    function insertSort(arr) {
+      for(var i =1;i<arr.length;i++){
+        var key = arr[i]
+        var j = i
+        while(j>0&&arr[j-1]>key){
+          arr[j] = arr[j-1]
+          j--
+        }
+        arr[j] = key
+      }
+      return arr
+    }
+    console.log(insertSort([7,4,5,3,3,0,7,9]))
+
+    function hillSort(arr) {
+      var gap = Math.floor(arr.length/2)
+      while(gap!==0){
+        for(var i =gap;i<arr.length;i++){
+          var temp = arr[i]
+          var j = i -gap
+          for(;j>=0&&temp<arr[j];j-=gap){
+            arr[j+gap] = arr[j]
+          }
+          arr[j+gap] = temp
+        }
+        gap = Math.floor(gap/2)
+      }
+      return arr
+    }
+  </script>
+</body>
+</html>

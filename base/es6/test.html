@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>笔试</title>
+</head>
+<body>
+  <script>
+    class Test {
+    constructor (name, total, pass) {
+        this.name = name;
+        this.total = total;
+        this.pass = pass;
+    }
+    
+    rate () {
+        if (parseFloat(this.pass/this.total) <= 0.3) {
+            return 5;
+        }else if (parseFloat(this.pass/this.total) <= 0.6) {
+        	return 4;
+        }else if (parseFloat(this.pass/this.total) <= 1) {
+        	return 3;
+        }
+    }
+  }
+let strs = ['math 100 90', 'algorithm 10 8', 'string 50 1', 'dp 100 50']
+let str = ''
+let tests = []
+for (let i = 0; i < strs.length; i++) {
+    str = strs[i]
+    let arr = str.split(' ');
+	tests.push(new Test(...arr))
+}
+tests.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+})
+
+for (let i = 0; i < strs.length; i++) {
+    console.log(tests[i].name,' ',tests[i].rate())
+}
+
+  </script>
+</body>
+</html>
